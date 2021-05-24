@@ -9,6 +9,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="24dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintDimensionRatio="3:2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,23 +21,13 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="24dp"
         android:layout_marginTop="12dp"
+        android:textColor="@color/yellow"
+        android:fontFamily="@font/gugi_regular_font"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/item_imageView" />
 
-    <TextView
-        android:id="@+id/item_price_textView"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginBottom="24dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_title_textView" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

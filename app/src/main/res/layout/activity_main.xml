@@ -1,31 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main"
     tools:context=".MainActivity">
 
-    <com.naver.maps.map.MapView
-        android:id="@+id/mapView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="62dp"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/ic_running_solid"
+        app:layout_constraintBottom_toTopOf="@id/titleTextView"
+        app:layout_constraintStart_toStartOf="@id/titleTextView" />
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/roomsViewPager"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:layout_gravity="bottom"
-        android:layout_marginBottom="120dp"
-        android:orientation="horizontal" />
-
-    <com.naver.maps.map.widget.LocationButtonView
-        android:id="@+id/currentLocationButton"
+    <TextView
+        android:id="@+id/titleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="top|start"
-        android:layout_margin="12dp"/>
+        android:layout_marginTop="180dp"
+        android:fontFamily="@font/gugi_regular_font"
+        android:gravity="center"
+        android:text="방탈출 찾기"
+        android:textColor="@color/yellow"
+        android:textSize="55dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <include layout="@layout/bottom_sheet" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="70dp"
+        android:backgroundTint="@color/yellow"
+        android:hint="검색을 원하는 지역명을 입력하세요."
+        android:outlineAmbientShadowColor="@color/yellow"
+        android:textColorHint="@color/main"
+        app:boxBackgroundColor="@color/white"
+        app:boxStrokeColor="@color/yellow"
+        app:errorEnabled="true"
+        app:helperText="예시) 강남역, 강남구, 서초동"
+        app:helperTextEnabled="true"
+        app:helperTextTextColor="@color/yellow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titleTextView"
+        app:startIconDrawable="@drawable/ic_baseline_search_24"
+        app:startIconTint="@color/main">
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/searchEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/gugi_regular_font"
+            android:textColor="@color/main" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/additionalInfoTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:alpha="0.3"
+        android:background="@color/black"
+        android:drawablePadding="6dp"
+        android:gravity="center|start"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="6dp"
+        android:text="데이터 출처 : 네이버 장소"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:drawableStartCompat="@drawable/ic_baseline_info_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/searchButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/gugi_regular_font"
+        android:text="검색"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textField" />
+
+    <ProgressBar
+        android:id="@+id/progressbar"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
+        android:indeterminateTint="@color/white"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@id/additionalInfoTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/searchButton" />
+</androidx.constraintlayout.widget.ConstraintLayout>

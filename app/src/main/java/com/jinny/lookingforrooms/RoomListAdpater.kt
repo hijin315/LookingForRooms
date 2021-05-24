@@ -15,19 +15,21 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 
-class RoomListAdpater : ListAdapter<RoomsModel, RoomListAdpater.ItemViewHolder>(differ) {
+class RoomListAdpater(val itemClicked: (RoomsModel) -> Unit) :
+    ListAdapter<RoomsModel, RoomListAdpater.ItemViewHolder>(differ) {
     inner class ItemViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         fun bind(roomsModel: RoomsModel) {
             val titleTextView = view.findViewById<TextView>(R.id.item_title_textView)
-            val priceTextView = view.findViewById<TextView>(R.id.item_price_textView)
             val itemImageView = view.findViewById<ImageView>(R.id.item_imageView)
 
             titleTextView.text = roomsModel.title
-            priceTextView.text = roomsModel.price
             Glide.with(itemImageView.context)
                 .load(roomsModel.imgUrl)
-                .transform(CenterCrop(), RoundedCorners(dpToPx(itemImageView.context,12)))
+                .transform(CenterCrop(), RoundedCorners(dpToPx(itemImageView.context, 12)))
                 .into(itemImageView)
+            view.setOnClickListener {
+                itemClicked(roomsModel)
+            }
         }
     }
 

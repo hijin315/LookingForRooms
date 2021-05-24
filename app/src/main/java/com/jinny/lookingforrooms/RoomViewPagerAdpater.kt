@@ -16,11 +16,11 @@ class RoomViewPagerAdpater(val itemClicked: (RoomsModel) -> Unit) :
     inner class ItemViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
         fun bind(roomsModel: RoomsModel) {
             val titleTextView = view.findViewById<TextView>(R.id.item_title_textView)
-            val priceTextView = view.findViewById<TextView>(R.id.item_price_textView)
+            val hourTextView = view.findViewById<TextView>(R.id.item_hour_textView)
             val itemImageView = view.findViewById<ImageView>(R.id.item_imageView)
 
             titleTextView.text = roomsModel.title
-            priceTextView.text = roomsModel.price
+            if(!roomsModel.hourInfo.isNullOrBlank()) hourTextView.text = roomsModel.hourInfo
             view.setOnClickListener {
                 itemClicked(roomsModel)
             }
