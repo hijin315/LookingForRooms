@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="naver_map_Client_Id">iy8t9p9btm</string>
-    <string name="naver_getlist_url">강남역</string>
 </resources>
